@@ -4,7 +4,12 @@ import seaborn as sns
 
 df = pd.read_csv("../data/exoplanets.csv")
 
-df = df.dropna(subset=["pl_orbper", "pl_rade", "pl_bmasse"])
+if df is None:
+    raise ValueError("Error: DataFrame is empty or file is not loaded properly.")
+
+df.isnull().sum()
+df = df.fillna({"pl_rade": df["pl_rade"].median()})
+df = df.dropna(subset=["pl_orbper", "pl_bmasse"], inplace=True)
 
 df = df.rename(columns={
     "pl_name": "Planet",
@@ -14,7 +19,11 @@ df = df.rename(columns={
     "pl_bmasse": "Planet Mass (Earth masses)"
 })
 
+print(df.head())
 print(df.describe())
+print(df.nlargest(5, "pl_rade"))
+print(df.nsmallest(5, "pl_rade"))
+print(df.corr())
 
 plt.figure(figsize=(8, 6))
 sns.scatterplot(x="Planet Radius (Earth radii)", y="Planet Mass (Earth masses)", data=df)
