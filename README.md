@@ -37,57 +37,51 @@ You can install them using `pip`:
 
 ```bash
 pip install -r requirements.txt
+```
+## How to Use
+- **Data Preprocessing:** The load_data() function loads and processes exoplanet data, ensuring the necessary columns (such as radius and mass) are available and cleaned.
 
-How to Use
-Data Preprocessing: The load_data() function loads and processes exoplanet data, ensuring the necessary columns (such as radius and mass) are available and cleaned.
+- **Model Training:** Run ai_model.py to train the classification and habitability prediction models. The models are saved to the models/ directory as .pkl files.
 
-Model Training:
-
-Run ai_model.py to train the classification and habitability prediction models. The models are saved to the models/ directory as .pkl files.
-
-Example:
-
-bash
-Copy
-Edit
+- **Example:**
+```bash
 python src/ai_model.py
-Prediction:
+```
+## Prediction:
 
-To predict the habitability of an exoplanet, run the habitability.py file and provide input values for the planet's radius and mass.
+- To predict the habitability of an exoplanet, run the habitability.py file and provide input values for the planet's radius and mass.
 
-Example:
-
-bash
-Copy
-Edit
+- **Example:**
+```bash
 python src/habitability.py
-Analyze Exoplanets:
+```
 
-Run the analyze_exoplanets.py script to visualize and make predictions for exoplanets using the trained models. This script will also generate graphs and display them using Matplotlib.
+## Analyze Exoplanets:
 
-Example:
+- Run the analyze_exoplanets.py script to visualize and make predictions for exoplanets using the trained models. This script will also generate graphs and display them using Matplotlib.
 
-bash
-Copy
-Edit
+- **Example:**
+```bash
 python src/analyze_exoplanets.py
-Example Usage
-After running analyze_exoplanets.py, you'll be able to see various visualizations and make predictions about the habitability of exoplanets using input values for their radius and mass.
+```
 
-python
-Copy
-Edit
+# Example Usage
+
+After running analyze_exoplanets.py, you'll be able to see various visualizations and make predictions about the habitability of exoplanets using input values for their radius and mass.
+```python
 radius = 1.2  # Example planet radius (in Earth radii)
 mass = 2.1    # Example planet mass (in Earth masses)
 
 habitability = predict_habitability(habitability_model, radius, mass)
 print(f"Predicted Habitability: {habitability}")
-Future Improvements
-Implement additional features (e.g., orbital period, star type) for more accurate predictions.
+```
 
-Experiment with other machine learning models and fine-tune hyperparameters.
+# Future Improvements
+- Implement additional features (e.g., orbital period, star type) for more accurate predictions.
 
-Add more comprehensive data preprocessing and error handling.
+- Experiment with other machine learning models and fine-tune hyperparameters.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Add more comprehensive data preprocessing and error handling.
+
+# License
+- This project is licensed under the MIT License - see the [LICENSE.md][LICENSE.md] file for details.
