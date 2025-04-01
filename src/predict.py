@@ -1,14 +1,9 @@
 import joblib 
 import pandas as pd
+import numpy as np
 
 model = joblib.load("models/exoplanet_classifier.pkl")
 
-def predict_exoplanet(planet_radius, planet_mass, orbital_period):
-    input_data = pd.DataFrame([[planet_radius,planet_mass, orbital_period]], columns=["Planet Radius (Earth radii)", "Planet Mass (Earth masses)", "Orbital Period (days)"])
-    prediction = model.predict(input_data)
-    return prediction[0]
-
-# Mapping numerical labels to their planet categories
 category_mapping = {
     0: "Earth-like",
     1: "Super-Earth",
@@ -16,6 +11,16 @@ category_mapping = {
     3: "Gas Giant"
 }
 
-example_prediction = predict_exoplanet(1.5, 5.2, 365)
-predicted_category = category_mapping[example_prediction]
-print(f"Predicted Exoplanet Category: {predicted_category}")
+def predict_exoplanet():
+    try: 
+        mass = float(input("Enter planet mass (Earth masses): "))
+        radius = float(input("Enter planet radius (Earth radii): "))
+        orbital_period = float(input("Enter orbital period (days): "))
+        input_data = pd.DataFrame([[radius, mass, orbital_period]], columns=["Planet Radius (Earth radii)", "Planet Mass (Earth masses)", "Orbital Period (days)"])
+        predicted_category = model.predict(input_data)[0]
+        print(f"\nPredcited Exoplanet Category: {category_mapping[predicted_category]}")
+    except ValueError:
+        print("Invalid Input! Please enter numerical values.")
+
+if __name__ == "__main__":
+    predict_exoplanet()
