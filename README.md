@@ -84,4 +84,4 @@ print(f"Predicted Habitability: {habitability}")
 - Add more comprehensive data preprocessing and error handling.
 
 # License
-- This project is licensed under the MIT License - see the [LICENSE.md][LICENSE.md] file for details.
+- This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
